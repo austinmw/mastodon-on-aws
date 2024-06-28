@@ -102,6 +102,7 @@ Resources:
       Parameters:
         Access: CloudFrontRead
         Versioning: 'false'
+        ForceDelete: 'true'
       TemplateURL: './node_modules/@cfn-modules/s3-bucket/module.yml'
   CloudFront:
     Type: 'AWS::CloudFormation::Stack'
@@ -142,6 +143,8 @@ Resources:
         DBMasterUsername: 'mastodon'
         DBMultiAZ: 'false'
         EngineVersion: '14.8'
+        DBDeletionProtection: 'false'
+        DBSkipFinalSnapshot: 'true'
       TemplateURL: './node_modules/@cfn-modules/rds-postgres/module.yml'
   Cluster:
     Type: 'AWS::CloudFormation::Stack'
@@ -445,6 +448,7 @@ Resources:
         Access: ElbAccessLogWrite
         Versioning: 'false'
         ExpirationInDays: '14'
+        ForceDelete: 'true' 
       TemplateURL: './node_modules/@cfn-modules/s3-bucket/module.yml'
   Alb:
     Type: 'AWS::CloudFormation::Stack'
